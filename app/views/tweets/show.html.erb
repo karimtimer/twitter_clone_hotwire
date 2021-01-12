@@ -13,4 +13,4 @@
   <%= render @tweet.comments %>
 </div>
 
-<%= link_to 'New Comment', new_tweet_comment_path(@tweet) %>
+<%= turbo_frame_tag 'new_comment', src: new_tweet_comment_path(@tweet), target: :_top %>
