@@ -1,9 +1,16 @@
-<p id="notice"><%= notice %></p>
+<%= turbo_stream_from @tweet %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @tweet.title %>
-</p>
+<%= turbo_frame_tag 'tweet' do %>
 
-<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
-<%= link_to 'Back', tweets_path %>
+  <%= render @tweet %>
+
+  <%= link_to 'Edit', edit_tweet_path(@tweet) %> |
+  <%= link_to 'Back', tweets_path, 'data-turbo-frame-tag': :_top %>
+<% end %>
+
+<div id='comments'>
+  <h2>Comments</h2>
+  <%= render @tweet.comments %>
+</div>
+
+<%= link_to 'New Comment', new_tweet_comment_path(@tweet) %>

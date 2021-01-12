@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 2021_01_12_111823) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "ticket_id", null: false
+    t.integer "tweet_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["ticket_id"], name: "index_comments_on_ticket_id"
+    t.index ["tweet_id"], name: "index_comments_on_tweet_id"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -57,5 +57,5 @@ ActiveRecord::Schema.define(version: 2021_01_12_111823) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "tickets"
+  add_foreign_key "comments", "tweets"
 end
