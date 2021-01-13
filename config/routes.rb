@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :tweets do
     resources :comments, only: %i[new create]
+    resource :like
+    resource :retweet
   end
 
   root to: 'tweets#index'

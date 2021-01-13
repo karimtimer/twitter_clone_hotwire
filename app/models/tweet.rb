@@ -1,4 +1,5 @@
 class Tweet < ApplicationRecord
+  after_create :set_like_and_retweet
   has_rich_text :content
   has_many :comments, dependent: :destroy
 
@@ -8,4 +9,9 @@ class Tweet < ApplicationRecord
   after_update_commit -> { broadcast_replace_to "tweets" }
 
   validates :content, presence: true
+
+  def set_like_and_retweet
+    self.update(like_count: 0)
+    self.update(retweet_count: 0)
+  end
 end
