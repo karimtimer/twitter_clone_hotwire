@@ -2,13 +2,18 @@
   <div class="tweet">
     <%= content_tag :div, id: dom_id(tweet) do %>
       <%# <h1> <%= tweet.title %1> </h1> %>
-      <p> <%= tweet.content %> </p>
-    <% end %>
+      <%# <p> <font size="+2"<%= tweet.content %1></font> %>
+        <p>Someone @someone - <%= time_ago_in_words(tweet.created_at) %> ago</p>
 
-    <div class="mt-2">
-      Comments (<%= tweet.comments.count %>)
-      Likes (0)
-      Retweets(0)
-    </div>
+        <%= tweet.content %>
+      <% end %>
+
+      <br>
+      <div class="mt-2">
+        Comments (<%= tweet.comments.count %>)
+        Likes (0)
+        Retweets(0)
+        <%= link_to "Edit", edit_tweet_path(tweet) %>
+      </div>
   </div>
 <% end %>
