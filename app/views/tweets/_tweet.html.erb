@@ -1,4 +1,14 @@
-<%= content_tag :div, id: dom_id(tweet) do %>
-  <%# <h1> <%= tweet.title %1> </h1> %>
-  <p> <%= tweet.content %> </p>
+<%= turbo_frame_tag dom_id(tweet) do %>
+  <div class="tweet">
+    <%= content_tag :div, id: dom_id(tweet) do %>
+      <%# <h1> <%= tweet.title %1> </h1> %>
+      <p> <%= tweet.content %> </p>
+    <% end %>
+
+    <div class="mt-2">
+      Comments (<%= tweet.comments.count %>)
+      Likes (0)
+      Retweets(0)
+    </div>
+  </div>
 <% end %>
